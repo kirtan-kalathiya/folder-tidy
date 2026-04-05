@@ -1,6 +1,6 @@
 {
   "name": "@newhomepage/folder-tidy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A powerful CLI tool to automatically organize and clean folders with undo support",
   "main": "index.js",
   "type": "commonjs",
