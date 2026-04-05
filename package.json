@@ -15,11 +15,12 @@
     "folder-tidy": "./index.js"
   },
   "scripts": {
-    "start": "node index.js",
-    "help": "node index.js --help",
-    "test:smoke": "node index.js --help && node index.js tidy --dry-run && node index.js undo --help",
-    "prepublishOnly": "npm run test:smoke",
-    "release": "npm version patch -m \"release: %s\" && git push origin main --follow-tags"
+  "test": "npm run test:smoke",
+  "start": "node index.js",
+  "help": "node index.js --help",
+  "test:smoke": "node index.js --help && node index.js tidy --dry-run && node index.js undo --help",
+  "prepublishOnly": "npm run test:smoke",
+  "release": "npm version patch -m \"release: %s\" && git push origin main --follow-tags"
   },
   "keywords": [
     "folder-tidy",
