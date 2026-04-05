@@ -1,12 +1,14 @@
 name: Publish Package
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -21,7 +23,6 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
 
     steps:
       - uses: actions/checkout@v4
@@ -36,9 +37,10 @@ jobs:
 
       - name: Sync version with tag
         env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ github.ref_name }}
         run: |
           TAG=${RELEASE_TAG#v}
+          echo "Version: $TAG"
           npm version "$TAG" --no-git-tag-version
 
       - run: npm publish --access public

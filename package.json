@@ -1,22 +1,30 @@
 {
   "name": "@newhomepage/folder-tidy",
   "version": "1.0.0",
+  "description": "A powerful CLI tool to automatically organize and clean folders with undo support",
   "main": "index.js",
+  "type": "commonjs",
+  "preferGlobal": true,
+
   "files": [
     "index.js",
     "src",
     "README.md",
     "LICENSE"
   ],
+
   "bin": {
     "folder-tidy": "./index.js"
   },
+
   "scripts": {
     "start": "node index.js",
     "help": "node index.js --help",
     "test:smoke": "node index.js --help && node index.js tidy --dry-run && node index.js undo --help",
-    "prepublishOnly": "npm run test:smoke"
+    "prepublishOnly": "npm run test:smoke",
+    "release": "npm version patch -m \"release: %s\" && git push origin main --follow-tags"
   },
+
   "keywords": [
     "folder-tidy",
     "cli",
@@ -29,19 +37,25 @@
     "undo",
     "file-management"
   ],
+
   "author": "kirtan kalathiya",
   "license": "MIT",
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirtan-kalathiya/folder-tidy.git"
   },
+
   "homepage": "https://github.com/kirtan-kalathiya/folder-tidy#readme",
+
   "bugs": {
     "url": "https://github.com/kirtan-kalathiya/folder-tidy/issues"
   },
+
   "publishConfig": {
     "access": "public"
   },
+
   "engines": {
     "node": ">=16"
   }
