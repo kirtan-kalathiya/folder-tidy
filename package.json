@@ -1,6 +1,6 @@
 {
   "name": "folder-tidy",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A powerful CLI tool to automatically organize and clean folders with undo support, progress bars, and interactive mode",
   "main": "index.js",
   "type": "commonjs",
