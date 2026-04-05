@@ -1,0 +1,48 @@
+{
+  "name": "@newhomepage/folder-tidy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "folder-tidy": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "help": "node index.js --help",
+    "test:smoke": "node index.js --help && node index.js tidy --dry-run && node index.js undo --help",
+    "prepublishOnly": "npm run test:smoke"
+  },
+  "keywords": [
+    "folder-tidy",
+    "cli",
+    "file-organizer",
+    "downloads-cleaner",
+    "automation",
+    "filesystem",
+    "productivity",
+    "nodejs",
+    "undo",
+    "file-management"
+  ],
+  "author": "kirtan kalathiya",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirtan-kalathiya/folder-tidy.git"
+  },
+  "homepage": "https://github.com/kirtan-kalathiya/folder-tidy#readme",
+  "bugs": {
+    "url": "https://github.com/kirtan-kalathiya/folder-tidy/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
