@@ -4,7 +4,7 @@
 
 `folder-tidy` is a production-ready Node.js CLI project for cleaning messy folders safely and intelligently.
 
-## ✨ What's New in v2.0.0
+## ✨ What's New in v1.0.8
 
 - 🎨 **Colored Output** - Beautiful, color-coded messages for better visibility
 - 🖱️ **Interactive Mode** - No need to remember commands, just run `folder-tidy`
@@ -215,7 +215,7 @@ folder-tidy config --target ~/Downloads
 
 ```json
 {
-  "version": "2.0.0",
+  "version": "1.0.8",
   "mode": "type",
   "recursive": false,
   "includeHidden": false,
@@ -318,7 +318,7 @@ folder-tidy respects a `.folder-tidy-config.json` file in your target directory:
 
 ```json
 {
-  "version": "2.0.0",
+  "version": "1.0.8",
   "mode": "type",
   "recursive": false,
   "includeHidden": false,
@@ -434,7 +434,7 @@ npm start             # Interactive menu
 
 ## Changelog
 
-### v2.0.0
+### v1.0.8
 
 - Added interactive mode with menu-driven interface
 - Added colored output for better readability

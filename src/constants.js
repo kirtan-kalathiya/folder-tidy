@@ -1,4 +1,4 @@
-const VERSION = '2.0.0';
+const VERSION = '1.0.8';
 const APP_FOLDER = '.folder-tidy';
 const MANIFEST_PREFIX = 'manifest-';
 const INTERNAL_FILES = new Set(['index.js', 'package.json', 'README.md', 'LICENSE']);
