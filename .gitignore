@@ -1,4 +1,75 @@
+# -----------------------------
+# 📦 Node Modules & Package Managers
+# -----------------------------
 node_modules/
+.npm/
 .npm-cache/
+.pnpm-store/
+.yarn/
+.yarn-cache/
+.yarn-integrity
+
+# -----------------------------
+# 🔐 Environment & Secrets
+# -----------------------------
+.env
+.env.*
+!.env.example
+
+# -----------------------------
+# 🧪 Testing & Temp Files
+# -----------------------------
 sample-test/
+test-output/
+coverage/
+test/
+.tmp/
+temp/
+*.log
+*.tmp
+
+# -----------------------------
+# 📂 Build / Distribution
+# -----------------------------
+dist/
+build/
+out/
 *.tgz
+
+# -----------------------------
+# 📊 Logs & Debug
+# -----------------------------
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -----------------------------
+# 🖥️ OS Files
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# 🧠 IDE / Editor
+# -----------------------------
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# -----------------------------
+# 📂 Folder-Tidy Specific
+# -----------------------------
+.folder-tidy-log.json
+.folder-tidy.json
+
+# -----------------------------
+# 🧾 Misc
+# -----------------------------
+*.bak
+*.swp
+*.cache

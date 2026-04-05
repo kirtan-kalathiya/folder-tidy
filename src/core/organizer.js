@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { APP_FOLDER, INTERNAL_FILES, VERSION } = require('../constants');
-const { ensureDirectory, getSafeDestination } = require('./filesystem');
+const { ensureDirectory, getSafeDestination, moveFileSync } = require('./filesystem');
 const { saveManifest } = require('./manifest');
 const { writeReport } = require('./report');
 const { buildDestinationFolder, getManagedFolders } = require('./rules');
@@ -25,7 +25,15 @@ function collectFiles(rootDir, options, stats) {
   destinationFolders.add(APP_FOLDER);
 
   function walk(currentDir) {
-    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    let entries;
+    try {
+      entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    } catch (error) {
+      console.error(`failed to read directory: ${path.relative(rootDir, currentDir) || '.'}`);
+      if (options.verbose) console.error(error.message);
+      stats.errors += 1;
+      return;
+    }
 
     for (const entry of entries) {
       const absolutePath = path.join(currentDir, entry.name);
@@ -55,6 +63,12 @@ function collectFiles(rootDir, options, stats) {
         } else if (options.verbose) {
           console.log(`skip subfolder: ${relativePath}`);
         }
+        continue;
+      }
+
+      if (entry.isSymbolicLink()) {
+        if (options.verbose) console.log(`skip symlink: ${relativePath}`);
+        stats.skipped += 1;
         continue;
       }
 
@@ -111,7 +125,7 @@ function tidyDirectory(targetDir, options) {
       ensureDirectory(destinationDir, options.dryRun);
 
       if (!options.dryRun) {
-        fs.renameSync(file.absolutePath, destinationPath);
+        moveFileSync(file.absolutePath, destinationPath);
       }
 
       console.log(`${options.dryRun ? 'plan' : 'move'}: ${file.relativePath} -> ${relativeDestination}`);

@@ -6,6 +6,19 @@ function ensureDirectory(dirPath, dryRun) {
   fs.mkdirSync(dirPath, { recursive: true });
 }
 
+function moveFileSync(sourcePath, destinationPath) {
+  try {
+    fs.renameSync(sourcePath, destinationPath);
+  } catch (error) {
+    if (error.code !== 'EXDEV') {
+      throw error;
+    }
+
+    fs.copyFileSync(sourcePath, destinationPath);
+    fs.unlinkSync(sourcePath);
+  }
+}
+
 function getSafeDestination(destinationDir, fileName) {
   const parsed = path.parse(fileName);
   let candidate = fileName;
@@ -22,4 +35,5 @@ function getSafeDestination(destinationDir, fileName) {
 module.exports = {
   ensureDirectory,
   getSafeDestination,
+  moveFileSync,
 };

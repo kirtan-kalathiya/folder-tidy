@@ -1,7 +1,7 @@
 {
-  "name": "@newhomepage/folder-tidy",
-  "version": "1.0.7",
-  "description": "A powerful CLI tool to automatically organize and clean folders with undo support",
+  "name": "folder-tidy",
+  "version": "2.0.0",
+  "description": "A powerful CLI tool to automatically organize and clean folders with undo support, progress bars, and interactive mode",
   "main": "index.js",
   "type": "commonjs",
   "preferGlobal": true,
@@ -9,6 +9,7 @@
     "index.js",
     "src",
     "README.md",
+    "QUICK-START.md",
     "LICENSE"
   ],
   "bin": {
@@ -20,7 +21,19 @@
     "help": "node index.js --help",
     "test:smoke": "node index.js --help && node index.js tidy --dry-run && node index.js undo --help",
     "prepublishOnly": "npm run test:smoke",
-    "release": "npm version patch -m \"release: %s\" && git push origin main --follow-tags"
+    "release": "npm version patch -m \"release: %s\" && git push origin main --follow-tags",
+    "organize": "node index.js tidy",
+    "clean": "node index.js tidy",
+    "preview": "node index.js tidy --dry-run",
+    "undo": "node index.js undo",
+    "watch": "node index.js watch",
+    "config": "node index.js config"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.5",
+    "cli-progress": "^3.12.0",
+    "chokidar": "^3.5.3"
   },
   "keywords": [
     "folder-tidy",
